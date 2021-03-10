@@ -28,11 +28,16 @@ module.exports = buildSchema(`
     password: String!
   }
 
-  type: RootMutation {
+  type RootMutation {
     createUser(userInput: UserInputData): User!
   }
 
+  type rootQuery{
+    hallo: String
+  }
+
   schema {
+    query: rootQuery
     mutation: RootMutation
   }
 `);
