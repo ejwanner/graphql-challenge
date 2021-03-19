@@ -1,5 +1,4 @@
 const path = require('path')
-const fs = require('fs')
 
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -13,6 +12,7 @@ const {
 const graphqlSchema = require('./graphql/schema');
 const graphqlResolver = require('./graphql/resolvers');
 const auth = require('./middleware/auth')
+const { clearImage } = require('./util/file');
 
 dotenv.config();
 const connectionString = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@cluster0.fyszm.mongodb.net/messages?retryWrites=true&w=majority`;
@@ -113,8 +113,3 @@ mongoose
     app.listen(8080);
   })
   .catch(err => console.log(err))
-
-const clearImage = filePath => {
-  filePath = path.join(__dirname, '..', filePath);
-  fs.unlink(filePath, err => console.log(err))
-}
