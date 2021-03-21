@@ -262,7 +262,7 @@ module.exports = {
     }
     const post = await Post.findById(id);
     if (!post) {
-      const error = new Error('No post found!');
+      const error = new Error('No post with this ID was found!');
       error.code = 404;
       throw error;
     }
@@ -286,7 +286,7 @@ module.exports = {
     }
     const user = await User.findById(req.userId);
     if (!user) {
-      const error = new Error('No user found!');
+      const error = new Error('No user with this ID was found!');
       error.code = 404;
       throw error;
     }
