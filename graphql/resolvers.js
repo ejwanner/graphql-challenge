@@ -111,14 +111,14 @@ module.exports = {
       });
     }
     if (errors.length > 0) {
-      const error = new Error('Invalid input.');
+      const error = new Error('Invalid input!');
       error.data = errors;
       error.code = 422;
       throw error;
     }
     const user = await User.findById(req.userId);
     if (!user) {
-      const error = new Error('Invalid user.');
+      const error = new Error('Invalid user!');
       error.code = 401;
       throw error;
     }
@@ -286,7 +286,7 @@ module.exports = {
     }
     const user = await User.findById(req.userId);
     if (!user) {
-      const error = new Error('No user with this ID was found!');
+      const error = new Error('No user with this ID was found!!!!');
       error.code = 404;
       throw error;
     }
