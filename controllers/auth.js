@@ -9,7 +9,7 @@ const User = require('../models/user');
 exports.signup = async (req, res, next) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
-    const error = new Error('Validation failed!');
+    const error = new Error('Validation was failed!');
     error.statusCode = 422;
     error.data = errors.array();
     throw error;
@@ -53,7 +53,7 @@ exports.login = async (req, res, next) => {
     loadedUser = user;
     const isEqual = await bcrypt.compare(password, user.password);
     if (!isEqual) {
-      const error = new Error('The password is incorrect!');
+      const error = new Error('The password is not correct!');
       error.statusCode = 401;
       throw error;
     }
@@ -109,7 +109,7 @@ exports.updateUserStatus = async (req, res, next) => {
     user.status = newStatus;
     await user.save();
     res.status(200).json({
-      message: 'User updated.'
+      message: 'User was updated.'
     })
   } catch (err) {
     if (!err.statusCode) {
